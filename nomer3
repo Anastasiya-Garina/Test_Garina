@@ -1,0 +1,43 @@
+#include <iostream> 
+#include <ctime> 
+#include <vector> 
+
+void getArr(int** arr, int numrow, int numcol) {
+    for (int row = 0; row < numrow; ++row) {
+        for (int col = 0; col < numcol; ++col) {
+            arr[row][col] = rand() % 70 + 1;
+        }
+    }
+}
+
+void printArr(int** arr, int numrow, int numcol) {
+    for (int row = 0; row < numrow; ++row) {
+        for (int col = 0; col < numcol; ++col) {
+            std::cout << arr[row][col] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+int main() {
+
+    int numrow;
+    int numcol;
+    std::cout << "Enter the number of rows: " << std::endl;
+    std::cin >> numrow;
+    std::cout << "Enter the number of columns: " << std::endl;
+    std::cin >> numcol;
+
+    int** arr = new int* [numrow];
+    for (int row = 0; row < numrow; ++row) {
+        arr[row] = new int[numcol];
+    }
+
+    getArr(arr, numrow, numcol);
+    printArr(arr, numrow, numcol);
+
+    delete[] arr;
+
+    return 0;
+
+}
